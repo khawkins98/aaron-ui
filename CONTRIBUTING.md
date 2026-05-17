@@ -2,7 +2,7 @@
 
 Thanks for your interest in contributing to Aaron UI.
 
-> **Status:** Phase 1 (WM core) shipped. The contribution flow below is the real flow now — `npm install`, run tests, open a PR. Phase 2 work (default Platinum chrome) is in flight; see [milestones](https://github.com/khawkins98/aaron-ui/milestones) for what's open.
+> **Status:** Phase 1 (WM core) shipped. The contribution flow below is the real flow now — `npm install`, run tests, open a PR. Phase 4 (theme engine, which absorbed the former Phase 2 / Platinum chrome after the 2026-05-17 Kaleidoscope-runtime pivot) is in flight; see [milestones](https://github.com/khawkins98/aaron-ui/milestones) and the [Phase 4 child tickets under #23](https://github.com/khawkins98/aaron-ui/issues/23) for what's open.
 
 ## Your first code contribution
 
