@@ -2,643 +2,7 @@
   "version": "0.1",
   "source": "scheme.r",
   "generatedAt": "2026-05-16T21:22:03.736Z",
-  "note": "Draft theme.json produced by @aaron-ui/scheme-extractor. Schema per docs/kaleidoscope-geometry-spec.md §7.",
-  "windowTypes": {
-    "collapsed-document-window": {
-      "chrome": {
-        "inactive": "cicn-n14336-inactive-document-window.png",
-        "active": "cicn-n14335-active-document-window.png",
-        "collapsed-inactive": "cicn-n14332-collapsed-inactive-document-window.png",
-        "collapsed-active": "cicn-n14331-collapsed-active-document-window.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            1,
-            22,
-            72,
-            23
-          ]
-        },
-        "part-1": {
-          "rect": [
-            9,
-            5,
-            20,
-            16
-          ]
-        },
-        "part-2": {
-          "rect": [
-            36,
-            5,
-            48,
-            16
-          ]
-        },
-        "part-3": {
-          "rect": [
-            53,
-            5,
-            64,
-            16
-          ]
-        },
-        "part-4": {
-          "rect": [
-            28,
-            3,
-            29,
-            19
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 5,
-            "part": "part-1"
-          },
-          {
-            "at": 21,
-            "part": "part-2"
-          },
-          {
-            "at": 24,
-            "part": "part-1"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          },
-          {
-            "at": 28,
-            "part": "part-6"
-          },
-          {
-            "at": 29,
-            "part": "part-5"
-          },
-          {
-            "at": 32,
-            "part": "part-6"
-          },
-          {
-            "at": 33,
-            "part": "part-8"
-          },
-          {
-            "at": 35,
-            "part": "part-1"
-          },
-          {
-            "at": 51,
-            "part": "part-3"
-          },
-          {
-            "at": 68,
-            "part": "part-10"
-          },
-          {
-            "at": 74,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 1,
-            "part": "part-0"
-          },
-          {
-            "at": 2,
-            "part": "part-8"
-          },
-          {
-            "at": 74,
-            "part": "part-0"
-          }
-        ],
-        "left": [],
-        "right": []
-      },
-      "bodyPattern": null
-    },
-    "document-window": {
-      "chrome": {
-        "inactive": "cicn-n14336-inactive-document-window.png",
-        "active": "cicn-n14335-active-document-window.png",
-        "collapsed-inactive": "cicn-n14332-collapsed-inactive-document-window.png",
-        "collapsed-active": "cicn-n14331-collapsed-active-document-window.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            1,
-            22,
-            72,
-            23
-          ]
-        },
-        "part-1": {
-          "rect": [
-            9,
-            5,
-            20,
-            16
-          ]
-        },
-        "part-2": {
-          "rect": [
-            36,
-            5,
-            48,
-            16
-          ]
-        },
-        "part-3": {
-          "rect": [
-            53,
-            5,
-            64,
-            16
-          ]
-        },
-        "part-4": {
-          "rect": [
-            28,
-            3,
-            29,
-            19
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 5,
-            "part": "part-1"
-          },
-          {
-            "at": 21,
-            "part": "part-2"
-          },
-          {
-            "at": 24,
-            "part": "part-1"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          },
-          {
-            "at": 28,
-            "part": "part-6"
-          },
-          {
-            "at": 29,
-            "part": "part-5"
-          },
-          {
-            "at": 32,
-            "part": "part-6"
-          },
-          {
-            "at": 33,
-            "part": "part-8"
-          },
-          {
-            "at": 35,
-            "part": "part-1"
-          },
-          {
-            "at": 51,
-            "part": "part-3"
-          },
-          {
-            "at": 68,
-            "part": "part-10"
-          },
-          {
-            "at": 74,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 1,
-            "part": "part-1"
-          },
-          {
-            "at": 2,
-            "part": "part-8"
-          },
-          {
-            "at": 73,
-            "part": "part-0"
-          },
-          {
-            "at": 74,
-            "part": "part-1"
-          }
-        ],
-        "left": [
-          {
-            "at": 22,
-            "part": "part-0"
-          },
-          {
-            "at": 23,
-            "part": "part-8"
-          }
-        ],
-        "right": [
-          {
-            "at": 22,
-            "part": "part-0"
-          },
-          {
-            "at": 23,
-            "part": "part-8"
-          }
-        ]
-      },
-      "bodyPattern": null
-    },
-    "movable-modal-dialog": {
-      "chrome": {
-        "collapsed-inactive": "cicn-n14332-collapsed-inactive-document-window.png",
-        "collapsed-active": "cicn-n14331-collapsed-active-document-window.png",
-        "inactive": "cicn-n14328-inactive-dialog.png",
-        "active": "cicn-n14327-active-dialog.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            3,
-            24,
-            32,
-            25
-          ]
-        },
-        "part-4": {
-          "rect": [
-            15,
-            4,
-            21,
-            20
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 7,
-            "part": "part-1"
-          },
-          {
-            "at": 8,
-            "part": "part-8"
-          },
-          {
-            "at": 15,
-            "part": "part-6"
-          },
-          {
-            "at": 21,
-            "part": "part-5"
-          },
-          {
-            "at": 26,
-            "part": "part-6"
-          },
-          {
-            "at": 27,
-            "part": "part-8"
-          },
-          {
-            "at": 36,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 27,
-            "part": "part-0"
-          },
-          {
-            "at": 36,
-            "part": "part-1"
-          }
-        ],
-        "left": [
-          {
-            "at": 24,
-            "part": "part-0"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          }
-        ],
-        "right": [
-          {
-            "at": 24,
-            "part": "part-0"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          }
-        ]
-      },
-      "bodyPattern": null
-    },
-    "modal-dialog": {
-      "chrome": {
-        "inactive": "cicn-n14336-inactive-document-window.png",
-        "active": "cicn-n14335-active-document-window.png",
-        "collapsed-inactive": "cicn-n14332-collapsed-inactive-document-window.png",
-        "collapsed-active": "cicn-n14331-collapsed-active-document-window.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            3,
-            3,
-            4,
-            4
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 8,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 8,
-            "part": "part-1"
-          }
-        ],
-        "left": [
-          {
-            "at": 3,
-            "part": "part-0"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          }
-        ],
-        "right": [
-          {
-            "at": 3,
-            "part": "part-0"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          }
-        ]
-      },
-      "bodyPattern": null
-    },
-    "alert": {
-      "chrome": {
-        "collapsed-inactive": "cicn-n14332-collapsed-inactive-document-window.png",
-        "collapsed-active": "cicn-n14331-collapsed-active-document-window.png",
-        "inactive": "cicn-n14328-inactive-dialog.png",
-        "active": "cicn-n14327-active-dialog.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            3,
-            3,
-            4,
-            4
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 8,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 8,
-            "part": "part-1"
-          }
-        ],
-        "left": [
-          {
-            "at": 3,
-            "part": "part-0"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          }
-        ],
-        "right": [
-          {
-            "at": 3,
-            "part": "part-0"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          }
-        ]
-      },
-      "bodyPattern": null
-    },
-    "movable-alert": {
-      "chrome": {
-        "inactive": "cicn-n14328-inactive-dialog.png",
-        "active": "cicn-n14327-active-dialog.png"
-      },
-      "parts": {
-        "part-0": {
-          "rect": [
-            3,
-            24,
-            32,
-            25
-          ]
-        },
-        "part-4": {
-          "rect": [
-            15,
-            4,
-            21,
-            20
-          ]
-        }
-      },
-      "edges": {
-        "top": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 7,
-            "part": "part-1"
-          },
-          {
-            "at": 8,
-            "part": "part-8"
-          },
-          {
-            "at": 15,
-            "part": "part-6"
-          },
-          {
-            "at": 21,
-            "part": "part-5"
-          },
-          {
-            "at": 26,
-            "part": "part-6"
-          },
-          {
-            "at": 27,
-            "part": "part-8"
-          },
-          {
-            "at": 36,
-            "part": "part-1"
-          }
-        ],
-        "bottom": [
-          {
-            "at": 0,
-            "part": "part-0"
-          },
-          {
-            "at": 3,
-            "part": "part-1"
-          },
-          {
-            "at": 4,
-            "part": "part-8"
-          },
-          {
-            "at": 27,
-            "part": "part-0"
-          },
-          {
-            "at": 36,
-            "part": "part-1"
-          }
-        ],
-        "left": [
-          {
-            "at": 24,
-            "part": "part-0"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          }
-        ],
-        "right": [
-          {
-            "at": 24,
-            "part": "part-0"
-          },
-          {
-            "at": 25,
-            "part": "part-8"
-          }
-        ]
-      },
-      "bodyPattern": null
-    }
-  },
+  "note": "Draft theme.json produced by @aaron-ui/scheme-extractor. Schema per docs/kaleidoscope-geometry-spec.md §7. Author/license metadata must be added manually per scheme.",
   "chromeElements": {
     "empty-horizontal-scrollbar": {
       "asset": "cicn-n8287-empty-horizontal-scrollbar.png",
@@ -826,14 +190,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        4,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 4,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12240,
       "sourceCinfId": -12240
     },
@@ -847,14 +211,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        6,
-        6
-      ],
-      "embossAnchor": [
-        7,
-        6
-      ],
+      "textAnchor": {
+        "x": 6,
+        "y": 6
+      },
+      "embossAnchor": {
+        "x": 7,
+        "y": 6
+      },
       "sourceCicnId": -12239,
       "sourceCinfId": -12239
     },
@@ -868,14 +232,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12238,
       "sourceCinfId": -12238
     },
@@ -889,14 +253,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        2,
-        2
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 2,
+        "y": 2
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12237,
       "sourceCinfId": -12237
     },
@@ -910,14 +274,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12236,
       "sourceCinfId": -12236
     },
@@ -931,14 +295,14 @@
         "tile": true
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12235,
       "sourceCinfId": -12235
     },
@@ -952,14 +316,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        2,
-        2
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 2,
+        "y": 2
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -12234,
       "sourceCinfId": -12234
     },
@@ -1204,14 +568,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8208,
       "sourceCinfId": -8208
     },
@@ -1225,14 +589,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8207,
       "sourceCinfId": -8207
     },
@@ -1246,14 +610,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8206,
       "sourceCinfId": -8206
     },
@@ -1267,14 +631,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8205,
       "sourceCinfId": -8205
     },
@@ -1288,14 +652,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8204,
       "sourceCinfId": -8204
     },
@@ -1309,14 +673,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8203,
       "sourceCinfId": -8203
     },
@@ -1330,14 +694,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8202,
       "sourceCinfId": -8202
     },
@@ -1351,14 +715,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8201,
       "sourceCinfId": -8201
     },
@@ -1372,14 +736,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        3,
-        3
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 3,
+        "y": 3
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -8200,
       "sourceCinfId": -8200
     },
@@ -1459,14 +823,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10144,
       "sourceCinfId": -10144
     },
@@ -1480,14 +844,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10143,
       "sourceCinfId": -10143
     },
@@ -1501,14 +865,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10142,
       "sourceCinfId": -10142
     },
@@ -1555,14 +919,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10132,
       "sourceCinfId": -10132
     },
@@ -1576,14 +940,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10131,
       "sourceCinfId": -10131
     },
@@ -1597,14 +961,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10130,
       "sourceCinfId": -10130
     },
@@ -1629,14 +993,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10128,
       "sourceCinfId": -10128
     },
@@ -1650,14 +1014,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10127,
       "sourceCinfId": -10127
     },
@@ -1671,14 +1035,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10126,
       "sourceCinfId": -10126
     },
@@ -1725,14 +1089,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10116,
       "sourceCinfId": -10116
     },
@@ -1746,14 +1110,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10115,
       "sourceCinfId": -10115
     },
@@ -1767,14 +1131,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10114,
       "sourceCinfId": -10114
     },
@@ -1810,14 +1174,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10080,
       "sourceCinfId": -10080
     },
@@ -1831,14 +1195,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9984,
       "sourceCinfId": -9984
     },
@@ -1852,14 +1216,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9983,
       "sourceCinfId": -9983
     },
@@ -1873,14 +1237,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9982,
       "sourceCinfId": -9982
     },
@@ -1894,14 +1258,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9981,
       "sourceCinfId": -9981
     },
@@ -1915,14 +1279,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9980,
       "sourceCinfId": -9980
     },
@@ -1936,14 +1300,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        4,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 4,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9978,
       "sourceCinfId": -9978
     },
@@ -1957,14 +1321,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        4,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 4,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9977,
       "sourceCinfId": -9977
     },
@@ -1978,14 +1342,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9976,
       "sourceCinfId": -9976
     },
@@ -1999,14 +1363,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9975,
       "sourceCinfId": -9975
     },
@@ -2020,14 +1384,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9974,
       "sourceCinfId": -9974
     },
@@ -2041,14 +1405,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9973,
       "sourceCinfId": -9973
     },
@@ -2062,14 +1426,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        12,
-        4
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 12,
+        "y": 4
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9972,
       "sourceCinfId": -9972
     },
@@ -2237,14 +1601,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        1,
-        1
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 1,
+        "y": 1
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -9551,
       "sourceCinfId": -9551
     },
@@ -2291,14 +1655,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10078,
       "sourceCinfId": -10078
     },
@@ -2312,14 +1676,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10075,
       "sourceCinfId": -10075
     },
@@ -2333,14 +1697,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10077,
       "sourceCinfId": -10077
     },
@@ -2354,14 +1718,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10079,
       "sourceCinfId": -10079
     },
@@ -2375,14 +1739,14 @@
         "tile": false
       },
       "bgPattern": null,
-      "textAnchor": [
-        0,
-        0
-      ],
-      "embossAnchor": [
-        0,
-        0
-      ],
+      "textAnchor": {
+        "x": 0,
+        "y": 0
+      },
+      "embossAnchor": {
+        "x": 0,
+        "y": 0
+      },
       "sourceCicnId": -10076,
       "sourceCinfId": -10076
     },
@@ -2420,24 +1784,646 @@
       "sourceCinfId": null
     }
   },
-  "patterns": {
-    "ppat--8286": {
-      "asset": "ppat-n8286-unnamed.png"
+  "windowTypes": {
+    "collapsed-document-window": {
+      "wndId": -14332,
+      "chrome": {
+        "active": "cicn-n14332-collapsed-inactive-document-window.png",
+        "cicnId": -14332
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 22,
+            "left": 1,
+            "bottom": 23,
+            "right": 72
+          }
+        },
+        {
+          "partId": 1,
+          "rect": {
+            "top": 5,
+            "left": 9,
+            "bottom": 16,
+            "right": 20
+          }
+        },
+        {
+          "partId": 2,
+          "rect": {
+            "top": 5,
+            "left": 36,
+            "bottom": 16,
+            "right": 48
+          }
+        },
+        {
+          "partId": 3,
+          "rect": {
+            "top": 5,
+            "left": 53,
+            "bottom": 16,
+            "right": 64
+          }
+        },
+        {
+          "partId": 4,
+          "rect": {
+            "top": 3,
+            "left": 28,
+            "bottom": 19,
+            "right": 29
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 5
+          },
+          {
+            "part": 2,
+            "border": 21
+          },
+          {
+            "part": 1,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          },
+          {
+            "part": 6,
+            "border": 28
+          },
+          {
+            "part": 5,
+            "border": 29
+          },
+          {
+            "part": 6,
+            "border": 32
+          },
+          {
+            "part": 8,
+            "border": 33
+          },
+          {
+            "part": 1,
+            "border": 35
+          },
+          {
+            "part": 3,
+            "border": 51
+          },
+          {
+            "part": 10,
+            "border": 68
+          },
+          {
+            "part": 1,
+            "border": 74
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 1
+          },
+          {
+            "part": 8,
+            "border": 2
+          },
+          {
+            "part": 0,
+            "border": 74
+          }
+        ],
+        "left": [],
+        "right": []
+      }
     },
-    "ppat--8285": {
-      "asset": "ppat-n8285-unnamed.png"
+    "document-window": {
+      "wndId": -14336,
+      "chrome": {
+        "active": "cicn-n14336-inactive-document-window.png",
+        "cicnId": -14336
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 22,
+            "left": 1,
+            "bottom": 23,
+            "right": 72
+          }
+        },
+        {
+          "partId": 1,
+          "rect": {
+            "top": 5,
+            "left": 9,
+            "bottom": 16,
+            "right": 20
+          }
+        },
+        {
+          "partId": 2,
+          "rect": {
+            "top": 5,
+            "left": 36,
+            "bottom": 16,
+            "right": 48
+          }
+        },
+        {
+          "partId": 3,
+          "rect": {
+            "top": 5,
+            "left": 53,
+            "bottom": 16,
+            "right": 64
+          }
+        },
+        {
+          "partId": 4,
+          "rect": {
+            "top": 3,
+            "left": 28,
+            "bottom": 19,
+            "right": 29
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 5
+          },
+          {
+            "part": 2,
+            "border": 21
+          },
+          {
+            "part": 1,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          },
+          {
+            "part": 6,
+            "border": 28
+          },
+          {
+            "part": 5,
+            "border": 29
+          },
+          {
+            "part": 6,
+            "border": 32
+          },
+          {
+            "part": 8,
+            "border": 33
+          },
+          {
+            "part": 1,
+            "border": 35
+          },
+          {
+            "part": 3,
+            "border": 51
+          },
+          {
+            "part": 10,
+            "border": 68
+          },
+          {
+            "part": 1,
+            "border": 74
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 1
+          },
+          {
+            "part": 8,
+            "border": 2
+          },
+          {
+            "part": 0,
+            "border": 73
+          },
+          {
+            "part": 1,
+            "border": 74
+          }
+        ],
+        "left": [
+          {
+            "part": 0,
+            "border": 22
+          },
+          {
+            "part": 8,
+            "border": 23
+          }
+        ],
+        "right": [
+          {
+            "part": 0,
+            "border": 22
+          },
+          {
+            "part": 8,
+            "border": 23
+          }
+        ]
+      }
     },
-    "ppat--8278": {
-      "asset": "ppat-n8278-unnamed.png"
+    "movable-modal-dialog": {
+      "wndId": -14324,
+      "chrome": {
+        "active": "cicn-n14324-inactive-movable-modal.png",
+        "cicnId": -14324
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 24,
+            "left": 3,
+            "bottom": 25,
+            "right": 32
+          }
+        },
+        {
+          "partId": 4,
+          "rect": {
+            "top": 4,
+            "left": 15,
+            "bottom": 20,
+            "right": 21
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 7
+          },
+          {
+            "part": 8,
+            "border": 8
+          },
+          {
+            "part": 6,
+            "border": 15
+          },
+          {
+            "part": 5,
+            "border": 21
+          },
+          {
+            "part": 6,
+            "border": 26
+          },
+          {
+            "part": 8,
+            "border": 27
+          },
+          {
+            "part": 1,
+            "border": 36
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 0,
+            "border": 27
+          },
+          {
+            "part": 1,
+            "border": 36
+          }
+        ],
+        "left": [
+          {
+            "part": 0,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          }
+        ],
+        "right": [
+          {
+            "part": 0,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          }
+        ]
+      }
     },
-    "ppat--8277": {
-      "asset": "ppat-n8277-unnamed.png"
+    "modal-dialog": {
+      "wndId": -14328,
+      "chrome": {
+        "active": "cicn-n14328-inactive-dialog.png",
+        "cicnId": -14328
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 3,
+            "left": 3,
+            "bottom": 4,
+            "right": 4
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 1,
+            "border": 8
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 1,
+            "border": 8
+          }
+        ],
+        "left": [
+          {
+            "part": 0,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          }
+        ],
+        "right": [
+          {
+            "part": 0,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          }
+        ]
+      }
     },
-    "indeterminate-progress": {
-      "asset": "ppat-n10080-indeterminate-progress.png"
+    "alert": {
+      "wndId": -14326,
+      "chrome": {
+        "active": "cicn-n14326-inactive-alert.png",
+        "cicnId": -14326
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 3,
+            "left": 3,
+            "bottom": 4,
+            "right": 4
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 1,
+            "border": 8
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 1,
+            "border": 8
+          }
+        ],
+        "left": [
+          {
+            "part": 0,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          }
+        ],
+        "right": [
+          {
+            "part": 0,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          }
+        ]
+      }
     },
-    "inactive-indeterminate-progress": {
-      "asset": "ppat-n10072-inactive-indeterminate-progress.png"
+    "movable-alert": {
+      "wndId": -14322,
+      "chrome": {
+        "active": "cicn-n14322-inactive-movable-alert.png",
+        "cicnId": -14322
+      },
+      "parts": [
+        {
+          "partId": 0,
+          "rect": {
+            "top": 24,
+            "left": 3,
+            "bottom": 25,
+            "right": 32
+          }
+        },
+        {
+          "partId": 4,
+          "rect": {
+            "top": 4,
+            "left": 15,
+            "bottom": 20,
+            "right": 21
+          }
+        }
+      ],
+      "edges": {
+        "top": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 7
+          },
+          {
+            "part": 8,
+            "border": 8
+          },
+          {
+            "part": 6,
+            "border": 15
+          },
+          {
+            "part": 5,
+            "border": 21
+          },
+          {
+            "part": 6,
+            "border": 26
+          },
+          {
+            "part": 8,
+            "border": 27
+          },
+          {
+            "part": 1,
+            "border": 36
+          }
+        ],
+        "bottom": [
+          {
+            "part": 0,
+            "border": 0
+          },
+          {
+            "part": 1,
+            "border": 3
+          },
+          {
+            "part": 8,
+            "border": 4
+          },
+          {
+            "part": 0,
+            "border": 27
+          },
+          {
+            "part": 1,
+            "border": 36
+          }
+        ],
+        "left": [
+          {
+            "part": 0,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          }
+        ],
+        "right": [
+          {
+            "part": 0,
+            "border": 24
+          },
+          {
+            "part": 8,
+            "border": 25
+          }
+        ]
+      }
     }
   }
 }
