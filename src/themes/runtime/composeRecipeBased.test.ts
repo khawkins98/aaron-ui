@@ -9,7 +9,7 @@ const OPTS = { cicnWidth: W, cicnHeight: H, cicnUrl: 'cicns/test.png' };
 function makeWindowType(
   edges: { at: number; part: string }[],
   parts: Record<string, [number, number, number, number]> = {},
-  side: 'top' | 'bottom' = 'top',
+  side: 'top' | 'bottom' | 'left' | 'right' = 'top',
 ): WindowTypeEntry {
   const partsMap: Record<string, { rect: [number, number, number, number] }> = {};
   for (const [k, v] of Object.entries(parts)) partsMap[k] = { rect: v };
