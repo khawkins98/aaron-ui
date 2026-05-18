@@ -185,19 +185,43 @@ function buildEdgeStrip(opts: BuildEdgeOptions): HTMLElement {
   const sentinel = { at: axisMax, part: '__edge_end__' };
   const cursor = [...sorted, sentinel];
 
+  // Build segment specs first so we can identify the first + last fill
+  // segments (corner anchors). Corners pin at native cicn-px size like
+  // CSS border-image; only interior fills grow with window resize.
+  type Spec = { start: number; end: number; span: number; part: string; isNamedWidget: boolean };
+  const specs: Spec[] = [];
   for (let i = 0; i < cursor.length - 1; i++) {
     const cur = cursor[i]!;
     const next = cursor[i + 1]!;
     const span = next.at - cur.at;
     if (span <= 0) continue;
+    specs.push({
+      start: cur.at,
+      end: next.at,
+      span,
+      part: cur.part,
+      // Treat part-0 (body marker) as fill — see BODY_PART comment above.
+      isNamedWidget: cur.part !== BODY_PART && cur.part in parts,
+    });
+  }
+  // Pin the first + last FILL segments as corners. Named widgets already
+  // pin (below), so we don't need to mark them — find the outermost
+  // fills and flag them.
+  const firstFillIdx = specs.findIndex((s) => !s.isNamedWidget);
+  let lastFillIdx = -1;
+  for (let i = specs.length - 1; i >= 0; i--) {
+    if (!specs[i]!.isNamedWidget) { lastFillIdx = i; break; }
+  }
+
+  specs.forEach((spec, i) => {
+    const { start, end, span, part, isNamedWidget } = spec;
+    const isCornerFill = !isNamedWidget && (i === firstFillIdx || i === lastFillIdx);
 
     const seg = document.createElement('div');
     seg.style.imageRendering = 'pixelated';
-    // Treat part-0 (body marker) as fill — see BODY_PART comment above.
-    const isNamedWidget = cur.part !== BODY_PART && cur.part in parts;
     seg.setAttribute(
       `${RICH_FRAME_ATTR}-segment`,
-      isNamedWidget ? `widget:${cur.part}` : 'fill',
+      isNamedWidget ? `widget:${part}` : isCornerFill ? 'corner' : 'fill',
     );
 
     // The actual pixels for any segment come from the cicn at the segment's
@@ -210,15 +234,19 @@ function buildEdgeStrip(opts: BuildEdgeOptions): HTMLElement {
     //   widget → pin at native cicn-px width (no stretch)
     //   fill   → grow proportional to cicn-span so the window-resize math
     //            distributes available space the way the author intended.
-    const start = cur.at;
-    const end = next.at;
     const sliceTop = isVertical ? start : 0;
     const sliceBottom = isVertical
       ? cicnHeight - end
       : cicnHeight - sideThickness;
     const sliceLeft = isVertical ? 0 : start;
     const sliceRight = isVertical ? cicnWidth - sideThickness : cicnWidth - end;
-    if (isNamedWidget) {
+    // Flex behavior:
+    //   widget or corner → pin at native cicn-px (no stretch — preserves
+    //                      the author's discrete graphics + corner anchors)
+    //   interior fill    → grow proportional to cicn span (absorbs window
+    //                      resize, mirroring how border-image stretches
+    //                      its center fill zone)
+    if (isNamedWidget || isCornerFill) {
       seg.style.flex = `0 0 ${span}px`;
     } else {
       seg.style.flex = `${span} ${span} auto`;
@@ -233,7 +261,7 @@ function buildEdgeStrip(opts: BuildEdgeOptions): HTMLElement {
     seg.style.borderImageWidth = '0';
     seg.style.borderImageRepeat = 'round';
     strip.appendChild(seg);
-  }
+  });
 
   return strip;
 }

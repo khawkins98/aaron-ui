@@ -69,7 +69,7 @@ describe('composeRichRecipe', () => {
     expect(top.children.length).toBe(6);
   });
 
-  it('tags widget segments distinctly from fill segments', async () => {
+  it('tags widget / corner / fill segments distinctly', async () => {
     await composeRichRecipe(windowEl, makeWindowType(), {
       cicnUrl: 'cicns/x.png',
       cicnWidth: 170,
@@ -77,9 +77,12 @@ describe('composeRichRecipe', () => {
     });
     const top = windowEl.querySelector('[data-aaron-rich-recipe-edge="top"]')!;
     const kinds = [...top.children].map((c) => c.getAttribute('data-aaron-rich-recipe-segment'));
-    // Expected: fill, fill, widget:close-box, fill, widget:zoom-box, fill
+    // Expected: corner, fill, widget:close-box, fill, widget:zoom-box, corner
+    // (First + last FILL segments are tagged 'corner' so they pin instead
+    // of growing — mirrors how CSS border-image anchors its corners.)
     expect(kinds.filter((k) => k?.startsWith('widget:')).length).toBe(2);
-    expect(kinds.filter((k) => k === 'fill').length).toBe(4);
+    expect(kinds.filter((k) => k === 'corner').length).toBe(2);
+    expect(kinds.filter((k) => k === 'fill').length).toBe(2);
   });
 
   it('sets window padding + custom props to match edge thicknesses', async () => {
