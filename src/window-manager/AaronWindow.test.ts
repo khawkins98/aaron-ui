@@ -790,8 +790,12 @@ describe('AaronWindow', () => {
         // window's outer footprint.
         expect(onmove).toHaveBeenCalledTimes(1);
         expect(onresize).toHaveBeenCalledTimes(1);
-        const [mx, my] = onmove.mock.calls[0];
-        const [rw, rh] = onresize.mock.calls[0];
+        const moveCall = onmove.mock.calls[0]!;
+        const resizeCall = onresize.mock.calls[0]!;
+        const mx = moveCall[0] as number;
+        const my = moveCall[1] as number;
+        const rw = resizeCall[0] as number;
+        const rh = resizeCall[1] as number;
         expect(mx).toBeGreaterThan(0);
         expect(my).toBeGreaterThan(0);
         expect(mx + rw).toBeLessThanOrEqual(window.innerWidth);
