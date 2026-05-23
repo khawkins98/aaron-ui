@@ -92,10 +92,38 @@ square boxes, 1px frame, centred title slot. Refinements outstanding: the 8-segm
 title-bar bevel + the right/bottom drop-shadow + locking the default grays to the
 canonical ramp.
 
-## CDEF 0 — push button (+ checkbox/radio) drawing recipe
-*(being decoded — background agent; fill with: drawCntl; rounded-rect shape +
-corner radius; face gradient top/bottom grays; bevel highlight/shadow; frame;
-pressed/disabled states; default ring; exact color table)*
+## CDEF 0 — button / checkbox / radio (DECODED) — and where the gradient really is
+
+**Important architectural finding:** CDEF 0 is the *legacy* System-7-derived
+`ButtonCDEF` carried into 8.0 (verified instruction-for-instruction against the
+leaked 7.1 `ButtonCDEF.a`). It draws a **flat** control, NOT the glossy Platinum
+gradient: a 1px `_FrameRoundRect` outline + a single-colour `_EraseRoundRect` face
++ centred title, with **all colours from the control's CCTB** (cFrameColor=idx0,
+cBodyColor=idx1, cTextColor=idx2) — there are **zero RGB immediates** in the
+resource. The **Platinum face gradient + highlight + shadow + default ring are
+drawn by the Appearance Manager's `DrawThemeButton`**, which intercepts when
+Appearance is active — that's a SEPARATE, bigger decode target (the Appearance
+Manager code, not a tidy CDEF). So the gradient we reproduce procedurally is our
+own faithful approximation of the documented Platinum face, not a CDEF transcript.
+
+What CDEF 0 DID give us (the verified geometry):
+- entry 0xc; message gate {0,1,2,10,11}; jump table at 0x118 → drawCntl at 0x14c.
+- **Push button = rounded rect, oval diameter = control height/2 → corner radius =
+  height/4** (`RoundCalc` 0x3da). ← the key fix (we had hard corners).
+- Pressed: face filled with cTextColor (colour) or `_InverRoundRect` (B&W).
+  Disabled: `InsetRect(1,1)` + `PenPat(50% gray)` + `PenMode(patBic)` +
+  `_PaintRoundRect` (knock toward white) + grayish title text.
+- **Checkbox/radio** (varCode 1/2, branch at 0x468): a **12×12** box at the left,
+  vert-centred, gap ~18 to the title; checkbox = `EraseRect`+`FrameRect` (+ check
+  from contrlValue), radio = `FrameOval`+`PaintOval` (+ dot); same CCTB colours +
+  gray-disable path. (Matches our platinumCheckable structure.)
+- Default-button ring: NOT here — Dialog/Appearance Manager adornment.
+
+→ Implemented in `platinumButton()`: rounded rect at **radius height/4**, canonical
+Platinum face gradient (FACE_TOP→FACE_BOT), 1px #888 rounded frame, white top
+highlight + soft bottom shadow, rounded 2px default ring. Pressed/disabled handled.
+Outstanding: decode the Appearance Manager `DrawThemeButton` for the *exact*
+gradient/ring (separate target); checkbox/radio colour-from-CCTB.
 
 ## Verification
 `node scripts/render-platinum.mjs <outdir>` renders the procedural sprites to PNGs

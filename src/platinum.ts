@@ -39,6 +39,17 @@ const shade = (c: RGBA, f: number): RGBA => {
   return [m(c[0]), m(c[1]), m(c[2]), 255];
 };
 
+/** Is pixel (i,j) inside a w×h rounded rectangle with corner radius r? */
+function inRound(i: number, j: number, w: number, h: number, r: number): boolean {
+  const cornerX = i < r || i >= w - r;
+  const cornerY = j < r || j >= h - r;
+  if (!(cornerX && cornerY)) return true; // straight edge / interior
+  const cx = i < r ? r : w - 1 - r;
+  const cy = j < r ? r : h - 1 - r;
+  const dx = i - cx, dy = j - cy;
+  return dx * dx + dy * dy <= r * r;
+}
+
 /** 1px rectangle outline [x,y,w,h]. */
 function strokeRect(b: PixelBuffer, x: number, y: number, w: number, h: number, c: RGBA): void {
   for (let i = 0; i < w; i++) { px(b, x + i, y, c); px(b, x + i, y + h - 1, c); }
@@ -181,6 +192,7 @@ function raisedFace(b: PixelBuffer, x: number, y: number, w: number, h: number, 
 export interface PlatinumButtonOptions {
   label?: string;
   default?: boolean;
+  pressed?: boolean;
   disabled?: boolean;
   minWidth?: number;
 }
@@ -195,14 +207,47 @@ export function platinumButton(opts: PlatinumButtonOptions = {}): PixelBuffer {
   const fg = opts.disabled ? '#9a9a9a' : '#000000';
   const glyphs = opts.label ? rasterizeText(opts.label, 11, fg) : null;
   const innerW = Math.max(opts.minWidth ?? 56, (glyphs ? glyphs.width : 0) + 24);
-  const ringPad = opts.default ? 3 : 0;
+  const ringPad = opts.default ? 4 : 0;
   const out = PixelBuffer.alloc(innerW + ringPad * 2, h + ringPad * 2);
   const bx = ringPad, by = ringPad;
+  // CDEF 0 decode: the push button is a ROUNDED RECT with oval diameter =
+  // height/2, i.e. corner radius = height/4. (CDEF 0 itself draws a flat
+  // CCTB-coloured rounded rect; the glossy face gradient + bevel + default ring
+  // are the Appearance Manager's DrawThemeButton — reproduced procedurally here
+  // from the canonical Platinum face.)
+  const r = Math.max(3, Math.round(h / 4));
+
+  // Default-button ring: a 2px black rounded outline with a 1px gap.
   if (opts.default) {
-    strokeRect(out, 0, 0, out.width, out.height, MARK); // 1px black ring
-    strokeRect(out, 1, 1, out.width - 2, out.height - 2, MARK);
+    const W = out.width, H = out.height;
+    const rr = r + ringPad;
+    for (let j = 0; j < H; j++) for (let i = 0; i < W; i++) {
+      if (!inRound(i, j, W, H, rr)) continue;
+      const deep = i >= 2 && j >= 2 && i < W - 2 && j < H - 2
+        && inRound(i - 2, j, W, H, rr) && inRound(i + 2, j, W, H, rr)
+        && inRound(i, j - 2, W, H, rr) && inRound(i, j + 2, W, H, rr);
+      if (!deep) px(out, i, j, MARK); // the 2px ring band
+    }
   }
-  raisedFace(out, bx, by, innerW, h, opts.disabled);
+
+  // Face: rounded-rect Platinum gradient (near-white→light-gray), a 1px #888
+  // rounded frame, a white top inner highlight + soft bottom shadow.
+  const FRAMEC: RGBA = opts.disabled ? MARK_OFF : [136, 136, 136, 255];
+  for (let j = 0; j < h; j++) {
+    for (let i = 0; i < innerW; i++) {
+      if (!inRound(i, j, innerW, h, r)) continue;
+      const t = j / (h - 1);
+      const v = opts.pressed ? Math.round(150 + (118 - 150) * t)
+        : opts.disabled ? 224
+        : Math.round(FACE_TOP[0] + (FACE_BOT[0] - FACE_TOP[0]) * t);
+      const boundary = !inRound(i - 1, j, innerW, h, r) || !inRound(i + 1, j, innerW, h, r)
+        || !inRound(i, j - 1, innerW, h, r) || !inRound(i, j + 1, innerW, h, r);
+      px(out, bx + i, by + j, boundary ? FRAMEC : [v, v, v, 255]);
+    }
+  }
+  if (!opts.pressed) {
+    for (let i = r; i < innerW - r; i++) { px(out, bx + i, by + 1, HILITE); px(out, bx + i, by + h - 2, shade(FACE_BOT, -0.18)); }
+  }
   if (glyphs) out.drawOver(glyphs, bx + Math.round((innerW - glyphs.width) / 2), by + Math.round((h - glyphs.height) / 2));
   return out;
 }
