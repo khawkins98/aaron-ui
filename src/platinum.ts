@@ -26,8 +26,10 @@ const FRAME: RGBA = [85, 85, 85, 255]; // #555 control outline
 const WHITE: RGBA = [255, 255, 255, 255];
 const HILITE: RGBA = [255, 255, 255, 255];
 const SHADOW: RGBA = [154, 154, 154, 255]; // #9a9a9a inner bevel shadow
-const FACE_TOP: RGBA = [246, 246, 246, 255];
-const FACE_BOT: RGBA = [205, 205, 205, 255]; // #cdcdcd raised-face gradient foot
+// Raised-face gradient, calibrated to real Platinum (sampled from apple-platinum-2's
+// cicns): a SUBTLE ramp centred on the #DDDDDD Platinum face, not a strong white→gray.
+const FACE_TOP: RGBA = [238, 238, 238, 255]; // #eeeeee
+const FACE_BOT: RGBA = [204, 204, 204, 255]; // #cccccc
 const MARK: RGBA = [0, 0, 0, 255];
 const MARK_OFF: RGBA = [136, 136, 136, 255]; // disabled mark / frame
 
@@ -235,9 +237,10 @@ export function platinumButton(opts: PlatinumButtonOptions = {}): PixelBuffer {
     }
   }
 
-  // Face: rounded-rect Platinum gradient (near-white→light-gray), a 1px #888
-  // rounded frame, a white top inner highlight + soft bottom shadow.
-  const FRAMEC: RGBA = opts.disabled ? MARK_OFF : [136, 136, 136, 255];
+  // Face: rounded-rect Platinum gradient, a 1px dark frame (real Platinum buttons
+  // have a dark #555-class outline, not the pale #888 we had), a white top inner
+  // highlight + soft bottom shadow.
+  const FRAMEC: RGBA = opts.disabled ? MARK_OFF : [85, 85, 85, 255]; // #555
   for (let j = 0; j < h; j++) {
     for (let i = 0; i < innerW; i++) {
       if (!inRound(i, j, innerW, h, r)) continue;
