@@ -280,3 +280,94 @@ export function platinumScrollbar(opts: PlatinumScrollbarOptions = {}): PixelBuf
   }
   return out;
 }
+
+/** Parse "#rrggbb" → opaque RGBA (mid-gray fallback). */
+function hexRGBA(hex?: string): RGBA {
+  const m = /^#?([0-9a-fA-F]{6})$/.exec(hex ?? '');
+  if (!m) return [204, 204, 204, 255];
+  const n = parseInt(m[1]!, 16);
+  return [(n >> 16) & 255, (n >> 8) & 255, n & 255, 255];
+}
+
+/** A small RAISED Platinum title-bar box (close/zoom/collapse): face fill, white
+ *  top-left highlight, shadow bottom-right, 1px frame. */
+function raisedBox(b: PixelBuffer, x: number, y: number, s: number, face: RGBA, frame: RGBA): void {
+  b.fillRect({ x, y, w: s, h: s }, face[0], face[1], face[2], 255);
+  strokeRect(b, x, y, s, s, frame);
+  for (let i = 1; i < s - 1; i++) { px(b, x + i, y + 1, HILITE); px(b, x + 1, y + i, HILITE); }
+  for (let i = 1; i < s - 1; i++) { px(b, x + i, y + s - 2, SHADOW); px(b, x + s - 2, y + i, SHADOW); }
+}
+
+export interface PlatinumWindowOptions {
+  contentW: number;
+  contentH: number;
+  title?: string;
+  active?: boolean;
+  utility?: boolean;
+  fill?: string;   // header fill (scheme headerColors.fill)
+  stripe?: string; // pinstripe line colour
+  text?: string;   // title-text colour
+  frame?: string;  // window outline colour
+}
+
+/**
+ * Procedural Mac OS 8 "Platinum" WINDOW frame, composed into a PixelBuffer the
+ * same way the themed compositor produces one — so the baseline renders through
+ * the same canvas-behind-content path, not CSS. Authentic Platinum STRUCTURE: a
+ * 1px-framed window, a ~19px title bar with the horizontal racing-stripe
+ * pinstripe (active only), raised close/zoom/collapse boxes with their glyphs,
+ * and a centred title on a fill plate that breaks the stripes. The content area
+ * is left transparent (the DOM content div sits over it). Colours come from the
+ * scheme's header clut when present so it still reads as that scheme; the
+ * geometry is Platinum. (This is the sanctioned engine fallback — see file head.)
+ */
+export function platinumWindow(opts: PlatinumWindowOptions): {
+  buffer: PixelBuffer;
+  frame: { left: number; top: number; right: number; bottom: number };
+} {
+  const titleH = 19;
+  const frame = { left: 1, top: titleH, right: 1, bottom: 1 };
+  const W = frame.left + opts.contentW + frame.right;
+  const H = frame.top + opts.contentH + frame.bottom;
+  const b = PixelBuffer.alloc(W, H);
+  const FILL = hexRGBA(opts.fill);
+  const STRIPE = hexRGBA(opts.stripe);
+  const FRAMEc = hexRGBA(opts.frame);
+  const active = opts.active !== false;
+
+  // Title-bar fill + racing-stripe pinstripe (thin horizontal lines, active only).
+  b.fillRect({ x: 0, y: 0, w: W, h: titleH }, FILL[0], FILL[1], FILL[2], 255);
+  if (active) for (let y = 3; y < titleH - 3; y += 2) for (let x = 2; x < W - 2; x++) px(b, x, y, STRIPE);
+  for (let x = 1; x < W - 1; x++) { px(b, x, 1, HILITE); px(b, x, titleH - 1, FRAMEc); } // top highlight + bar divider
+  strokeRect(b, 0, 0, W, H, FRAMEc); // window outer frame
+
+  // Title-bar boxes (11px), vertically centred. Close left; collapse + (doc-only)
+  // zoom on the right.
+  const s = 11;
+  const by = Math.round((titleH - s) / 2);
+  raisedBox(b, 4, by, s, FILL, FRAMEc); // close (plain)
+  const collapseX = W - 1 - 4 - s;
+  raisedBox(b, collapseX, by, s, FILL, FRAMEc);
+  for (let i = 3; i < s - 3; i++) px(b, collapseX + i, by + Math.floor(s / 2), MARK); // windowshade bar
+  let zoomX = -1;
+  if (!opts.utility) {
+    zoomX = collapseX - 3 - s;
+    raisedBox(b, zoomX, by, s, FILL, FRAMEc);
+    strokeRect(b, zoomX + 2, by + 2, s - 6, s - 6, MARK); // zoom inner square (top-left)
+  }
+
+  // Centred title on a fill plate (breaks the stripes), clamped clear of the boxes.
+  if (opts.title) {
+    const glyphs = rasterizeText(opts.title, 11, opts.text ?? '#000000');
+    const cx = W / 2;
+    const leftLimit = 4 + s + 4;
+    const rightLimit = (zoomX > 0 ? zoomX : collapseX) - 4;
+    let gx = Math.round(cx - glyphs.width / 2);
+    gx = Math.max(leftLimit, Math.min(rightLimit - glyphs.width, gx));
+    if (gx >= leftLimit) {
+      b.fillRect({ x: gx - 4, y: 2, w: glyphs.width + 8, h: titleH - 3 }, FILL[0], FILL[1], FILL[2], 255);
+      b.drawOver(glyphs, gx, Math.round((titleH - glyphs.height) / 2));
+    }
+  }
+  return { buffer: b, frame };
+}

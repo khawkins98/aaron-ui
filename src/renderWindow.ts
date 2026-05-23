@@ -4,6 +4,7 @@ import { loadCicnBuffer } from './cicnImage.js';
 import { composeWindowChrome } from './composeChrome.js';
 import { rasterizeText } from './textRaster.js';
 import type { PixelBuffer } from './pixelBuffer.js';
+import { platinumWindow } from './platinum.js';
 
 export interface RenderWindowOptions {
   /** Window-type slug. Default `'document-window'`. */
@@ -203,8 +204,18 @@ function buildBaselineWindow(
   // visible (apple-platinum's darkTinge == fill, which read as inactive).
   const active = state !== 'inactive';
   const stripe = hc.darkTinge && hc.darkTinge !== fill ? hc.darkTinge : darkenHex(fill, 0.14);
-  const barBg = active ? `repeating-linear-gradient(0deg, ${fill} 0 1px, ${stripe} 1px 2px)` : fill;
-  const titleH = 19;
+
+  // Compose the Platinum frame as a RASTER buffer (authentic pinstripe title
+  // bar, raised close/zoom/collapse boxes, 1px frame) — the same canvas-behind-
+  // content path the themed compositor uses, not CSS. Utility/mini windows are
+  // label-free in a modern context (aria-label carries it for AT).
+  const { buffer, frame } = platinumWindow({
+    contentW, contentH, active, utility: !!utility,
+    title: utility ? '' : title,
+    fill, stripe, text, frame: frameC,
+  });
+  const fullW = buffer.width;
+  const fullH = buffer.height;
 
   const win = document.createElement('div');
   win.className = 'aw-window';
@@ -213,64 +224,35 @@ function buildBaselineWindow(
     win.setAttribute('role', utility ? 'dialog' : 'group');
     win.setAttribute('aria-label', title);
   }
-  // Explicit footprint (border-box) so callers can read the window's full size
-  // — `width`/`height` match the cicn path, e.g. the scene sizes its desk to it.
-  const fullW = contentW + 2; // 1px frame each side
-  const fullH = titleH + 1 + contentH + 2; // bar + bar border-bottom + top/bottom frame
   Object.assign(win.style, {
     position: 'relative',
-    border: `1px solid ${frameC}`,
-    background: fill,
-    boxSizing: 'border-box',
     width: `${fullW * scale}px`,
     height: `${fullH * scale}px`,
   } satisfies Partial<CSSStyleDeclaration>);
 
-  // titlebar: horizontal pinstripe (Platinum racing stripes) in the header
-  // fill, centered title in the header text color, close + zoom/collapse boxes
-  const bar = document.createElement('div');
-  Object.assign(bar.style, {
-    position: 'relative', height: `${titleH * scale}px`,
-    borderBottom: `1px solid ${frameC}`,
-    background: barBg,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    font: `${Math.round(11 * scale)}px Charcoal, Chicago, Geneva, sans-serif`,
-    color: text,
+  const canvas = document.createElement('canvas');
+  canvas.className = 'aw-chrome';
+  canvas.width = fullW;
+  canvas.height = fullH;
+  const ctx = canvas.getContext('2d');
+  if (ctx) ctx.putImageData(buffer.toImageData(), 0, 0);
+  Object.assign(canvas.style, {
+    position: 'absolute', left: '0', top: '0',
+    width: `${fullW * scale}px`, height: `${fullH * scale}px`,
+    imageRendering: 'pixelated', zIndex: '0', pointerEvents: 'none',
   } satisfies Partial<CSSStyleDeclaration>);
-  const widget = (left: number): HTMLDivElement => {
-    const w = document.createElement('div');
-    Object.assign(w.style, {
-      position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-      [left >= 0 ? 'left' : 'right']: `${Math.abs(left) * scale}px`,
-      width: `${11 * scale}px`, height: `${11 * scale}px`,
-      border: `1px solid ${frameC}`, background: fill,
-      boxShadow: `inset 0 1px 0 rgba(255,255,255,0.5)`,
-    } satisfies Partial<CSSStyleDeclaration>);
-    return w;
-  };
-  // Document windows: close (left) + zoom & windowshade (right). Utility /
-  // "mini" windows: close (left) + a single windowshade (right), no zoom.
-  bar.appendChild(widget(5)); // close box (left)
-  bar.appendChild(widget(-5)); // windowshade (right)
-  if (!utility) bar.appendChild(widget(-18)); // zoom box (right) — doc windows only
-  // Visible title on document windows only; utility/mini windows are
-  // label-free in a modern context (the aria-label carries it for AT).
-  if (title && !utility) {
-    const t = document.createElement('span');
-    t.textContent = title;
-    Object.assign(t.style, { background: fill, padding: `0 ${4 * scale}px`, position: 'relative', zIndex: '1' });
-    bar.appendChild(t);
-  }
-  win.appendChild(bar);
 
   const content = document.createElement('div');
   content.className = 'aw-content';
   Object.assign(content.style, {
-    position: 'relative', width: `${contentW * scale}px`, height: `${contentH * scale}px`,
-    overflow: 'hidden', boxSizing: 'border-box',
+    position: 'absolute',
+    left: `${frame.left * scale}px`, top: `${frame.top * scale}px`,
+    width: `${contentW * scale}px`, height: `${contentH * scale}px`,
+    overflow: 'auto', boxSizing: 'border-box', zIndex: '1',
     ...bodyBackgroundStyle(theme),
   } satisfies Partial<CSSStyleDeclaration>);
-  win.appendChild(content);
+
+  win.append(canvas, content);
   return win;
 }
 
