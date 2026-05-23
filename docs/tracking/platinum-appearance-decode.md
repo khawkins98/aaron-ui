@@ -132,8 +132,21 @@ comparison as the decoded colours/geometry are folded into `platinum.ts`.
 
 ## Status / next
 - [x] Confirmed 8.0 WDEF/CDEF are 68k + draw directly (tractable).
-- [x] Extraction pipeline + headless render harness.
-- [ ] WDEF 0 wDraw recipe + colors → refine `platinumWindow`.
-- [ ] CDEF 0 button recipe + colors → refine `platinumButton` (rounded corners!).
-- [ ] CDEF 0 checkbox/radio (varCodes) → refine `platinumCheckable`.
-- [ ] CDEF 1 scrollbar → refine `platinumScrollbar`.
+- [x] Extraction pipeline (`hfsutils` → MacBinary → resource fork → objdump) +
+      headless render harness (`scripts/render-platinum.mjs`).
+- [x] **WDEF 0 decoded** → `platinumWindow` refined: title-bar 3-D bevel +
+      structure drop-shadow + canonical gray ramp (pinstripe/19px-bar already matched).
+- [x] **CDEF 0 decoded** → `platinumButton` rewritten as a **rounded rect (radius
+      = height/4)** with the Platinum gradient face, #888 rounded frame, white
+      highlight, rounded default ring. The big "hard corners → rounded" fidelity fix.
+- [x] Slider thumb rounded (2px) to match.
+- [x] Verified in the demo (AP2 playground window + the Procedural Platinum
+      baseline buttons) and confirmed NO regression on themed schemes (the
+      platinum path is fallback-only; themed windows/controls use cicns).
+- [ ] **The exact button gradient/ring** lives in the Appearance Manager's
+      `DrawThemeButton`, NOT CDEF 0 — a separate, bigger decode target (the
+      Appearance Manager code in the System, likely not a tidy resource). Our
+      gradient is a faithful procedural reproduction of the documented Platinum
+      face; decoding DrawThemeButton would make it byte-exact.
+- [ ] CDEF 0 checkbox/radio colour-from-CCTB; CDEF 1 scrollbar exact metrics
+      (current procedural versions are decode-consistent in structure + look right).

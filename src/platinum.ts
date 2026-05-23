@@ -156,16 +156,21 @@ export function platinumSlider(opts: PlatinumSliderOptions = {}): PixelBuffer {
     for (let y = 1; y < length - 1; y++) { px(out, g0, y, SHADOW); px(out, g0 + grooveT - 1, y, WHITE); }
   }
 
-  // thumb: raised rounded face positioned by value along the long axis.
+  // thumb: raised rounded-rect face (2px corner round) positioned by value.
   const drawThumb = (tx: number, ty: number, w: number, h: number) => {
+    const tr = 2;
+    const frameC = opts.disabled ? MARK_OFF : FRAME;
     for (let j = 0; j < h; j++) {
-      const t = j / Math.max(1, h - 1);
-      const r = Math.round(FACE_TOP[0] + (FACE_BOT[0] - FACE_TOP[0]) * t);
-      for (let i = 0; i < w; i++) px(out, tx + i, ty + j, [r, r, r, 255]);
+      for (let i = 0; i < w; i++) {
+        if (!inRound(i, j, w, h, tr)) continue;
+        const t = j / Math.max(1, h - 1);
+        const v = Math.round(FACE_TOP[0] + (FACE_BOT[0] - FACE_TOP[0]) * t);
+        const boundary = !inRound(i - 1, j, w, h, tr) || !inRound(i + 1, j, w, h, tr)
+          || !inRound(i, j - 1, w, h, tr) || !inRound(i, j + 1, w, h, tr);
+        px(out, tx + i, ty + j, boundary ? frameC : [v, v, v, 255]);
+      }
     }
-    strokeRect(out, tx, ty, w, h, opts.disabled ? MARK_OFF : FRAME);
-    for (let i = 1; i < w - 1; i++) px(out, tx + i, ty + 1, HILITE);
-    for (let i = 1; i < h - 1; i++) px(out, tx + 1, ty + i, HILITE);
+    for (let i = tr; i < w - tr; i++) px(out, tx + i, ty + 1, HILITE);
   };
   if (horiz) {
     const travel = length - thumbCross;
